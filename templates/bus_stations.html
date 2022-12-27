@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Расписание автобусов</title>
+    <link rel="icon" type="image/png" href="/static/favicon.png">
+</head>
+<body style="font-family: Trebuchet MS; line-height: 0.5;">
+    <form>
+        <input type="button" value="Назад" onclick="location.href='/'">
+    </form>
+
+    <h3>Выберите остановку:</h3>
+
+    {% for station in stations %}
+        <form>
+            <input type="button" value="{{ station.ID }}. {{ station.name }} - {{ station.direction }}" onclick="location.href='/bus_station/ID={{ station.ID }}'">
+        </form>
+    {% endfor %}
+
+</body>
+</html>

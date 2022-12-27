@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Остановка "{{ station.name }}"</title>
+    <link rel="icon" type="image/png" href="/static/favicon.png">
+</head>
+<body style="font-family: Trebuchet MS; line-height: 0.5;">
+    <form>
+        <input type="button" value="Назад" onclick="location.href='/bus_stations'">
+    </form>
+
+    <h2>Остановка "{{ station.name }}"</h2>
+    <img src="/static/screens_of_bus_stations/{{ station.ID }}.png" alt="Фото отсутствует :(" height="400" width="800">
+    <h4>Направление: {{ station.direction }}</h4>
+
+    <h4>Маршрутки:</h4>
+    <ul>
+    {% for num in buses %}
+        <li><h5>{{ num }}</h5></li>
+    {% endfor %}
+    </ul>
+
+    <h4>Ближайшие маршрутки:</h4>
+    <ul>
+    {% for route in closely_routes %}
+        <li><h4>{{ route.number }} приедет через <b>{{ route.minute }}</b> минут</h4></li>
+    </ul>
+    {% endfor %}
+</body>
+</html>
